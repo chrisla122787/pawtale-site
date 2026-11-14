@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PawTale Gifts — Personalized AI Pet Portraits from Your Photo</title>
+<meta name="description" content="Turn one favorite pet photo into three personalized AI art styles, ready to print, frame, or gift. Standard $19, Premium $29. Likeness promise: two free regenerations or a full refund.">
+<style>
+  :root{
+    --ink:#2b2118; --cream:#faf5ec; --paper:#fffdf8; --gold:#b8862f; --gold-soft:#e9d9b8;
+    --sage:#5c7150; --line:#e5dcc8; --muted:#6f6252;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--ink);line-height:1.55}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+  header.site{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+  .logo{font-size:24px;font-weight:bold;letter-spacing:.5px}
+  .logo span{color:var(--gold)}
+  .nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-size:15px}
+  .btn{display:inline-block;background:var(--gold);color:#fff;padding:14px 30px;border-radius:999px;
+       font-size:17px;text-decoration:none;font-family:inherit;border:none;cursor:pointer}
+  .btn:hover{background:#9d7226}
+  .btn.small{padding:9px 20px;font-size:15px}
+  /* Hero */
+  .hero{text-align:center;padding:64px 0 40px}
+  .eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:13px;color:var(--sage);font-weight:bold}
+  .hero h1{font-size:44px;line-height:1.15;margin:16px auto 18px;max-width:720px}
+  .hero p.sub{font-size:19px;color:var(--muted);max-width:680px;margin:0 auto 28px}
+  .hero .note{font-size:14px;color:var(--muted);margin-top:14px}
+  .hero-art{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:36px 0 6px}
+  .frame{width:300px;max-width:86vw;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px;box-shadow:0 4px 18px rgba(60,45,20,.08)}
+  .frame img{width:100%;border-radius:6px;display:block;aspect-ratio:4/5;object-fit:cover;background:var(--gold-soft)}
+  .frame figcaption{text-align:center;font-size:14px;color:var(--muted);padding:8px 0 2px}
+  section{padding:52px 0}
+  h2{font-size:31px;text-align:center;margin-bottom:10px}
+  .lead{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 34px;font-size:17px}
+  /* Styles */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px}
+  .card h3{font-size:20px;margin-bottom:8px;color:var(--sage)}
+  .card p{color:var(--muted);font-size:15.5px}
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;text-align:center}
+  .step .num{width:46px;height:46px;border-radius:50%;background:var(--gold);color:#fff;font-size:21px;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+  .step h3{font-size:18px;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:15px}
+  /* Pricing */
+  .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:760px;margin:0 auto}
+  .price{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px}
+  .price.premium{border:2px solid var(--gold)}
+  .price h3{font-size:21px}
+  .amount{font-size:42px;margin:8px 0 2px}
+  .amount small{font-size:15px;color:var(--muted)}
+  .price ul{list-style:none;margin:16px 0 22px}
+  .price li{padding:5px 0 5px 24px;position:relative;font-size:15.5px}
+  .price li:before{content:"✓";position:absolute;left:0;color:var(--sage);font-weight:bold}
+  /* Guarantee + FAQ */
+  .guarantee{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:34px;max-width:820px;margin:0 auto}
+  .guarantee h2{text-align:left}
+  .guarantee p{color:var(--muted);font-size:16.5px}
+  .faq{max-width:820px;margin:0 auto}
+  details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px}
+  summary{font-weight:bold;cursor:pointer;font-size:16.5px}
+  details p{color:var(--muted);margin-top:8px;font-size:15.5px}
+  /* Upload */
+  .upload{background:var(--ink);color:var(--cream);border-radius:16px;padding:44px 30px;text-align:center;max-width:820px;margin:0 auto}
+  .upload h2{color:var(--cream)}
+  .upload p{color:#d8cdb8;max-width:560px;margin:0 auto 24px}
+  footer.site{border-top:1px solid var(--line);padding:34px 0 44px;text-align:center;color:var(--muted);font-size:14px}
+  footer.site a{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <div class="logo">PawTale <span>Gifts</span></div>
+    <nav>
+      <a href="#styles">Styles</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+      <a class="btn small" href="#order">Upload My Pet Photo</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- 1. HERO -->
+  <div class="hero">
+    <div class="eyebrow">Personalized AI Pet Portraits · Starting at $19</div>
+    <h1>Your Pet. Three Beautiful Portraits. One Special Gift.</h1>
+    <p class="sub">Turn one favorite pet photo into three personalized AI art styles, ready to print, frame, or gift. Standard is $19, and Premium is $29 with extra gift layouts and print sizes. Pay before generation, review your private watermarked proof, and approve before downloading. Two free regenerations or your money back if you're still not happy.</p>
+    <a class="btn" href="#order">Upload My Pet Photo</a>
+    <div class="note">Digital portraits, delivered as print-ready files. Made with AI from your photo — honestly labeled, always.</div>
+    <div class="hero-art">
+      <figure class="frame"><img src="sample-watercolor.jpg" alt="Sample pet portrait in soft watercolor style"><figcaption>Soft Watercolor — sample</figcaption></figure>
+      <figure class="frame"><img src="sample-oil.jpg" alt="Sample pet portrait in classic oil painting style"><figcaption>Classic Oil Painting — sample</figcaption></figure>
+      <figure class="frame"><img src="sample-royal.jpg" alt="Sample pet portrait in royal portrait style"><figcaption>Royal Portrait — sample</figcaption></figure>
+    </div>
+  </div>
+
+  <!-- 3. STYLES -->
+  <section id="styles">
+    <h2>Three Art Styles, One Photo</h2>
+    <p class="lead">Every order includes all three styles, made from your one photo.</p>
+    <div class="cards">
+      <div class="card"><h3>Soft Watercolor</h3><p>Gentle, light, and warm — the style that looks at home in a nursery, a hallway, or a grandma's living room.</p></div>
+      <div class="card"><h3>Classic Oil Painting</h3><p>Rich color and a timeless painted feel, like a portrait that has hung in the family for years.</p></div>
+      <div class="card"><h3>Royal Portrait</h3><p>Your pet, posed like royalty. The most gifted and most shared style — dignified, funny, and unforgettable.</p></div>
+    </div>
+  </section>
+
+  <!-- 4. HOW IT WORKS -->
+  <section>
+    <h2>How It Works</h2>
+    <p class="lead">Simple, and you approve everything before you download.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Upload &amp; pay</h3><p>Send one clear photo of your pet and choose Standard ($19) or Premium ($29).</p></div>
+      <div class="step"><div class="num">2</div><h3>Review your proof</h3><p>We create your portraits and send you a private, watermarked proof to review.</p></div>
+      <div class="step"><div class="num">3</div><h3>Approve or regenerate</h3><p>Not the right likeness? You get two free regenerations — or a full refund.</p></div>
+      <div class="step"><div class="num">4</div><h3>Download &amp; print</h3><p>Approve your proof and unlock high-resolution, print-ready files.</p></div>
+    </div>
+  </section>
+
+  <!-- 5. PRICING -->
+  <section id="pricing">
+    <h2>Three Beautiful Portraits. One Simple Price.</h2>
+    <p class="lead">One photo. Three artistic styles. No subscription or hidden charges.</p>
+    <div class="prices">
+      <div class="price">
+        <h3>Standard</h3>
+        <div class="amount">$19 <small>one-time</small></div>
+        <ul>
+          <li>One pet, from one photo</li>
+          <li>All 3 art styles included</li>
+          <li>Print-ready file: 8×10 in (2400×3000, 300 DPI)</li>
+          <li>Phone wallpaper version</li>
+          <li>Two free regenerations</li>
+          <li>Covered by the Pet Likeness Promise</li>
+        </ul>
+        <a class="btn" href="#order">Start with Standard</a>
+      </div>
+      <div class="price premium">
+        <h3>Premium</h3>
+        <div class="amount">$29 <small>one-time</small></div>
+        <ul>
+          <li>Everything in Standard</li>
+          <li>Extra print sizes: 5×7, 11×14, and 16×20 files</li>
+          <li>Gift layouts: portrait card, square, and phone-story formats</li>
+          <li>Two free regenerations</li>
+          <li>Covered by the Pet Likeness Promise</li>
+        </ul>
+        <a class="btn" href="#order">Start with Premium</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. GUARANTEE -->
+  <section>
+    <div class="guarantee">
+      <h2>Our Pet Likeness Promise</h2>
+      <p>Your pet should still look like your pet. After payment, you'll receive a private, watermarked proof to review before unlocking your finished portraits. If the likeness doesn't look right, you can request up to two free regenerations. If you still don't approve the result after both regenerations, we'll automatically refund your full purchase price. You only unlock the high-resolution, print-ready files when you approve your proof.</p>
+      <p style="margin-top:14px">Your private proof is created after payment. AI processing times may vary. Once you approve your proof, your finished high-resolution downloads will be available. If generation fails, you'll receive a refund.</p>
+    </div>
+  </section>
+
+  <!-- ORDER / UPLOAD -->
+  <section id="order">
+    <div class="upload">
+      <h2>Ready When You Are</h2>
+      <p>Upload one clear photo of your pet — face visible, good light, no blur — and choose your package. Your proof comes back for your approval before anything is final.</p>
+      <a class="btn" href="https://buy.stripe.com/9B6fZi4ZJ6uQ32IbS80oM0c">Upload My Pet Photo — $19</a>
+      <p style="margin-top:16px"><a href="https://buy.stripe.com/9B6dRa77Rg5q0UAe0g0oM0d" style="color:var(--gold-soft)">Or Premium — $29, with extra sizes &amp; gift layouts</a></p>
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <section id="faq">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>What kind of photo should I upload?</summary><p>One clear photo where your pet's face is fully visible, in good light, with no blur and no other animals in front. A phone photo is fine — the clearer the face, the better the likeness.</p></details>
+      <details><summary>When will I receive my portraits?</summary><p>Your private proof is created after payment. AI processing times may vary. Once you approve your proof, your finished high-resolution downloads will be available right away. If generation fails, you'll receive a refund.</p></details>
+      <details><summary>What if the portraits don't look like my pet?</summary><p>That's exactly what the Pet Likeness Promise covers: request up to two free regenerations, and if you still don't approve the result, we refund your full purchase price.</p></details>
+      <details><summary>Can I print the portraits?</summary><p>Yes. Files are print-ready at 300 DPI — Standard includes an 8×10 inch file, and Premium adds 5×7, 11×14, and 16×20 files. Print them at home or at any photo shop, and frame them like any portrait.</p></details>
+      <details><summary>What's the difference between Standard and Premium?</summary><p>Both include one pet in all three art styles, a watermarked proof, two free regenerations, and the Likeness Promise. Premium adds more print sizes (5×7, 11×14, 16×20) and gift layouts (portrait card, square, and phone-story formats).</p></details>
+    </div>
+  </section>
+</div>
+
+<!-- 8. FOOTER -->
+<footer class="site">
+  <div class="wrap">
+    <p><strong>PawTale Gifts</strong> · Personalized AI pet portraits from your photo</p>
+    <p style="margin-top:8px">Contact: hello@pawtalegifts.com · <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Refund Policy</a></p>
+    <p style="margin-top:8px">Portraits are created with AI from the photo you upload. Refunds are issued to your original payment method; processing times are set by your payment provider.</p>
+  </div>
+</footer>
+
+</body>
+</html>
